@@ -82,4 +82,8 @@ int main() {
     pentagonrec(arr, 5, 0);  // Start recursion with index 0
     return 0;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

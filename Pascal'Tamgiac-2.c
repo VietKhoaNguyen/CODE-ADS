@@ -47,4 +47,8 @@ int* getRow(int rowIndex, int* returnSize) {
 
     return row;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

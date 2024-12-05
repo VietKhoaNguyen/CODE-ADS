@@ -19,6 +19,7 @@ int main() {
     printf("Column Title: %s, Column Number: %d\n", columnTitle, columnNumber);
     return 0;
 }
+<<<<<<< HEAD
 /*recur O(n)
 #include <stdio.h>
 #include <string.h>
@@ -39,6 +40,28 @@ int titleToNumberRecursive(char* columnTitle, int length) {
 int titleToNumber(char* columnTitle) {
     int length = strlen(columnTitle);
     return titleToNumberRecursive(columnTitle, length);
+=======
+/*Rcursive O(n)
+#include <stdio.h>
+#include <string.h>
+
+int titleToNumberHelper(char* columnTitle, int index, int length) {
+    // Base case: when we've processed all characters
+    if (index == length) {
+        return 0;
+    }
+
+    // Recursive step: Get the value of the current character
+    int currentValue = columnTitle[index] - 'A' + 1;
+    
+    // Process the rest of the string
+    return currentValue * (1 << (26 * (length - index - 1))) + titleToNumberHelper(columnTitle, index + 1, length);
+}
+
+int titleToNumber(char* columnTitle) {
+    int length = strlen(columnTitle);
+    return titleToNumberHelper(columnTitle, 0, length);
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
 }
 
 // Example usage
@@ -48,4 +71,8 @@ int main() {
     printf("Column Title: %s, Column Number: %d\n", columnTitle, columnNumber);
     return 0;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

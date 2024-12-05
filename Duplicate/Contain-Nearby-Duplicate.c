@@ -30,6 +30,7 @@ int main() {
 
     return 0;
 }
+<<<<<<< HEAD
 /*recur O(n)
 #include <stdio.h>
 #include <stdbool.h>
@@ -60,6 +61,37 @@ bool containsNearbyDuplicate(int* nums, int numsSize, int k) {
     return false;  // No duplicates found within range k
 }
 
+=======
+/*Recur: O(n*k)
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+// Recursive helper function
+bool containsNearbyDuplicateHelper(int* nums, int numsSize, int k, int currentIndex) {
+    // Base case: If we have processed all elements, return false
+    if (currentIndex >= numsSize) {
+        return false;
+    }
+
+    // Check if any element from the current index to currentIndex + k is equal to nums[currentIndex]
+    for (int i = currentIndex + 1; i <= currentIndex + k && i < numsSize; i++) {
+        if (nums[i] == nums[currentIndex]) {
+            return true; // Found a duplicate within the range k
+        }
+    }
+
+    // Recur for the next index
+    return containsNearbyDuplicateHelper(nums, numsSize, k, currentIndex + 1);
+}
+
+// Wrapper function to initialize recursion
+bool containsNearbyDuplicate(int* nums, int numsSize, int k) {
+    return containsNearbyDuplicateHelper(nums, numsSize, k, 0);
+}
+
+// Example usage
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
 int main() {
     int nums[] = {1, 2, 3, 1};
     int numsSize = sizeof(nums) / sizeof(nums[0]);
@@ -73,4 +105,8 @@ int main() {
 
     return 0;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

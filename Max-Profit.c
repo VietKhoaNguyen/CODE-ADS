@@ -68,6 +68,7 @@ int maxProfit(int* prices, int pricesSize) {
     return maxProfitHelper(prices, pricesSize, 0, INT_MAX, 0);
 }
 */
+<<<<<<< HEAD
         
         // Calculate the current profit
         int current_profit = prices[i] - min_price;
@@ -80,3 +81,5 @@ int maxProfit(int* prices, int pricesSize) {
     
     return max_profit;
 }
+=======
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

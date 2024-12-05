@@ -69,7 +69,11 @@ int main() {
 
     return 0;
 }
+<<<<<<< HEAD
 /*recrur O(n)
+=======
+/*Recur:            O(n)
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -79,13 +83,20 @@ struct ListNode {
     struct ListNode *next;
 };
 
+<<<<<<< HEAD
 // Recursive function to delete duplicates from a sorted linked list
 struct ListNode* deleteDuplicates(struct ListNode* head) {
     // Base case: If the list is empty or has only one element, return the list as is
+=======
+// Function to delete duplicates from a sorted linked list recursively
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+    // Base case: if the list is empty or has only one element, return the list as is
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
     if (head == NULL || head->next == NULL) {
         return head;
     }
 
+<<<<<<< HEAD
     // If the current node's value is equal to the next node's value, skip the next node
     if (head->val == head->next->val) {
         head->next = head->next->next;
@@ -96,6 +107,17 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
         head->next = deleteDuplicates(head->next);
         return head;
     }
+=======
+    // If current node's value is equal to the next node's value, skip the next node
+    if (head->val == head->next->val) {
+        head->next = deleteDuplicates(head->next);  // Recursively move to the next node
+    } else {
+        // If no duplicate, just move to the next node
+        head->next = deleteDuplicates(head->next);
+    }
+
+    return head;  // Return the head of the modified list
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
 }
 
 // Helper function to create a new node
@@ -136,4 +158,8 @@ int main() {
 
     return 0;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae

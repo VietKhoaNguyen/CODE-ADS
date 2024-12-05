@@ -76,4 +76,8 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
 
     return triangle;
 }
+<<<<<<< HEAD
 */
+=======
+*/
+>>>>>>> 5527a31819c76f85ec241af65a5c546360320eae
