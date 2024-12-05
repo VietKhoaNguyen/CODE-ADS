@@ -30,3 +30,50 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
     
     return triangle;
 }
+/*recur O(n^2)
+#include <stdlib.h>
+
+// Helper function to calculate a specific element in Pascal's triangle row
+int calculateElement(int rowIndex, int colIndex) {
+    // Base case: when the column is at the boundary (first or last column), return 1
+    if (colIndex == 0 || colIndex == rowIndex) {
+        return 1;
+    }
+
+    // Recursive case: calculate element based on previous row elements
+    return calculateElement(rowIndex - 1, colIndex - 1) + calculateElement(rowIndex - 1, colIndex);
+}
+
+// Recursive function to generate Pascal's Triangle
+void generateRow(int** triangle, int rowIndex, int* returnColumnSizes) {
+    // Allocate memory for the current row
+    triangle[rowIndex] = (int*)malloc((rowIndex + 1) * sizeof(int));
+
+    // Set the column size for this row
+    returnColumnSizes[rowIndex] = rowIndex + 1;
+
+    // Fill in the elements of the row
+    for (int j = 0; j <= rowIndex; j++) {
+        triangle[rowIndex][j] = calculateElement(rowIndex, j);
+    }
+}
+
+// Function to generate the entire Pascal's Triangle using recursion
+int** generate(int numRows, int* returnSize, int** returnColumnSizes) {
+    // Allocate memory for the result 2D array
+    int** triangle = (int**)malloc(numRows * sizeof(int*));
+
+    // Allocate memory for column sizes
+    *returnColumnSizes = (int*)malloc(numRows * sizeof(int));
+
+    // Set the returnSize
+    *returnSize = numRows;
+
+    // Generate each row recursively
+    for (int i = 0; i < numRows; i++) {
+        generateRow(triangle, i, *returnColumnSizes);
+    }
+
+    return triangle;
+}
+*/
