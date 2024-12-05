@@ -36,7 +36,7 @@ int main() {
     return 0;
 }
 
-// (b): Recursion
+// (b): Recursion O(n)
 void recursive_modulus(double complex_array[][2], int i, double result[], int size) {
     if (i == size) {
         return;
