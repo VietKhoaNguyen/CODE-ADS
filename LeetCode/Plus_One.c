@@ -55,3 +55,82 @@ int main() {
     
     return 0;
 }
+/*recur O(n)
+#include <stdio.h>
+#include <stdlib.h>
+
+void plusOneRecursive(int* digits, int index, int digitsSize, int* carry) {
+    // Base case: if index is -1, we are out of bounds and need to handle overflow
+    if (index < 0 && *carry == 1) {
+        // Shift all elements to the right and set carry at the most significant digit
+        for (int i = digitsSize; i >= 0; i--) {
+            digits[i] = digits[i - 1];
+        }
+        digits[0] = 1;  // Set the most significant digit to 1
+        return;
+    }
+
+    // If we are within bounds, process the digit at the current index
+    if (index >= 0) {
+        int sum = digits[index] + *carry;
+        digits[index] = sum % 10;  // Update the digit
+        *carry = sum / 10;  // Update carry
+    }
+
+    // If there's a carry, recurse to the next digit (index - 1)
+    if (*carry > 0 && index > 0) {
+        plusOneRecursive(digits, index - 1, digitsSize, carry);
+    }
+}
+
+int* plusOne(int* digits, int digitsSize, int* returnSize) {
+    int* result = (int*)malloc(digitsSize * sizeof(int));  // Allocate memory for the result
+    if (!result) {
+        return NULL;  // Return NULL if memory allocation fails
+    }
+
+    // Copy the original digits into the result
+    for (int i = 0; i < digitsSize; i++) {
+        result[i] = digits[i];
+    }
+
+    // Start the recursion with the last index of the array and carry initialized to 1
+    int carry = 1;
+    plusOneRecursive(result, digitsSize - 1, digitsSize, &carry);
+
+    // If there was no overflow, return the array as is
+    if (carry == 0) {
+        *returnSize = digitsSize;
+        return result;
+    }
+
+    // If overflow occurred, increase the return size by 1
+    *returnSize = digitsSize + 1;
+    return result;
+}
+
+// Function to print the array
+void printArray(int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int digits[] = {9, 9, 9};
+    int digitsSize = 3;
+    int returnSize;
+    
+    // Call the plusOne function
+    int* result = plusOne(digits, digitsSize, &returnSize);
+    
+    // Print the result array
+    printArray(result, returnSize);  // Expected output: 1 0 0 0
+    
+    // Free the allocated memory
+    free(result);
+    
+    return 0;
+}
+*/
