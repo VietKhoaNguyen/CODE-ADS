@@ -30,3 +30,47 @@ int main() {
 
     return 0;
 }
+/*recur O(n)
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <unordered_set>  // For hash set in C++
+
+bool containsNearbyDuplicate(int* nums, int numsSize, int k) {
+    if (k <= 0) return false;  // No need to check for k <= 0
+
+    // Hash set to track elements in the sliding window
+    unordered_set<int> seen;
+
+    for (int i = 0; i < numsSize; i++) {
+        // Check if the current number is in the set (duplicate found)
+        if (seen.find(nums[i]) != seen.end()) {
+            return true;
+        }
+
+        // Add the current number to the set
+        seen.insert(nums[i]);
+
+        // If the window size exceeds k, remove the oldest element (out of range)
+        if (i >= k) {
+            seen.erase(nums[i - k]);
+        }
+    }
+
+    return false;  // No duplicates found within range k
+}
+
+int main() {
+    int nums[] = {1, 2, 3, 1};
+    int numsSize = sizeof(nums) / sizeof(nums[0]);
+    int k = 3;
+
+    if (containsNearbyDuplicate(nums, numsSize, k)) {
+        printf("The array contains nearby duplicates.\n");
+    } else {
+        printf("The array does not contain nearby duplicates.\n");
+    }
+
+    return 0;
+}
+*/
