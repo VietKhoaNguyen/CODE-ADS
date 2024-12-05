@@ -38,3 +38,52 @@ int main() {
     
     return 0;
 }
+/*Recursive         O(n)
+#include <stdio.h>
+
+// Recursive function to remove duplicates from the sorted array
+int removeDuplicatesRecursive(int* nums, int index, int numsSize) {
+    // Base case: If we reach the end of the array, return the current index
+    if (index >= numsSize) {
+        return index;
+    }
+
+    // If the current element is a duplicate, skip it
+    if (nums[index] == nums[index - 1]) {
+        return removeDuplicatesRecursive(nums, index + 1, numsSize);
+    }
+
+    // Otherwise, update the next unique position
+    nums[index] = nums[index];  // This is implicitly true, but here for clarity
+    return removeDuplicatesRecursive(nums, index + 1, numsSize);
+}
+
+// Wrapper function to initialize the recursion
+int removeDuplicates(int* nums, int numsSize) {
+    // If the array is empty or has only one element, there are no duplicates
+    if (numsSize == 0) {
+        return 0;
+    }
+    return removeDuplicatesRecursive(nums, 1, numsSize);  // Start from the second element
+}
+
+// Function to print the array (for testing purposes)
+void printArray(int* nums, int length) {
+    for (int i = 0; i < length; i++) {
+        printf("%d ", nums[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int nums[] = {1, 1, 2, 2, 3, 3, 4};
+    int numsSize = 7;
+
+    int newLength = removeDuplicates(nums, numsSize);
+
+    // Print the modified array with unique elements
+    printArray(nums, newLength);  // Expected output: 1 2 3 4
+
+    return 0;
+}
+*/
