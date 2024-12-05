@@ -49,3 +49,68 @@ int main() {
     
     return 0;
 }
+/*recur O(n)
+#include <stdio.h>
+#include <stdlib.h>
+
+int* twoSumHelper(int* nums, int numsSize, int target, int* hashTable, int index, int* returnSize, int* result) {
+    // Base case: if we have reached the end of the array
+    if (index == numsSize) {
+        return NULL;
+    }
+
+    // Calculate the complement of the current number
+    int complement = target - nums[index];
+    
+    // Check if the complement is already in the hash table
+    if (hashTable[complement + 500000] != 0) {
+        // If found, store the indices in the result array (0-based index)
+        result[0] = hashTable[complement + 500000] - 1;
+        result[1] = index;
+        *returnSize = 2;
+        return result;
+    }
+    
+    // Otherwise, store the current number's index in the hash table (mark it with a positive value)
+    hashTable[nums[index] + 500000] = index + 1;
+
+    // Recurse with the next index
+    return twoSumHelper(nums, numsSize, target, hashTable, index + 1, returnSize, result);
+}
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
+    // Create a hash table to store numbers and their indices
+    int* hashTable = (int*)calloc(1000000, sizeof(int));
+
+    // Initialize return size to 0 (to be filled later)
+    *returnSize = 0;
+
+    // Allocate memory for the result array (indices of the solution)
+    int* result = (int*)malloc(2 * sizeof(int));
+
+    // Start the recursion from index 0
+    twoSumHelper(nums, numsSize, target, hashTable, 0, returnSize, result);
+
+    // Free the hash table and return the result
+    free(hashTable);
+    return result;
+}
+
+int main() {
+    int nums[] = {3, 2, 4};
+    int target = 6;
+    int returnSize;
+    
+    // Call the recursive twoSum function
+    int* result = twoSum(nums, 4, target, &returnSize);
+
+    if (result != NULL) {
+        printf("Indices: [%d, %d]\n", result[0], result[1]);
+        free(result); // Free the result array
+    } else {
+        printf("No solution found.\n");
+    }
+    
+    return 0;
+}
+*/
