@@ -32,3 +32,44 @@ int main() {
     printf("The picked number is %d\n", result);
     return 0;
 }
+/*recur O(log n)
+#include <stdio.h>
+
+// Simulating the guess API for demonstration purposes
+// Replace this with the actual implementation of the API
+int pickedNumber = 6; // Example picked number for testing
+int guess(int num) {
+    if (num > pickedNumber) return -1;
+    if (num < pickedNumber) return 1;
+    return 0;
+}
+
+// Recursive function to guess the number
+int guessNumberRecursive(int left, int right) {
+    if (left > right) {
+        return -1; // This should never be reached if the input is valid
+    }
+
+    int mid = left + (right - left) / 2;
+    int result = guess(mid);
+
+    if (result == 0) {
+        return mid; // Found the correct number
+    } else if (result == -1) {
+        return guessNumberRecursive(left, mid - 1); // Guess is too high
+    } else {
+        return guessNumberRecursive(mid + 1, right); // Guess is too low
+    }
+}
+
+int guessNumber(int n) {
+    return guessNumberRecursive(1, n);
+}
+
+int main() {
+    int n = 10; // The range of numbers [1, n]
+    int result = guessNumber(n);
+    printf("The picked number is %d\n", result);
+    return 0;
+}
+*/

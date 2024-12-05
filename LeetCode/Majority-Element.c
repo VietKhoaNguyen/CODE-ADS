@@ -39,3 +39,37 @@ int main() {
     printf("Majority Element: %d\n", result); // Output: 3
     return 0;
 }
+/*recur O(n)
+#include <stdio.h>
+
+// Recursive helper function for Boyer-Moore Voting Algorithm
+int majorityElementRecursiveHelper(int* nums, int numsSize, int index, int candidate, int count) {
+    if (index == numsSize) {
+        return candidate;
+    }
+
+    // Update the candidate based on the current element
+    if (count == 0) {
+        candidate = nums[index]; // Set new candidate
+    }
+
+    // Update the count
+    count += (nums[index] == candidate) ? 1 : -1;
+
+    // Recurse with the next index
+    return majorityElementRecursiveHelper(nums, numsSize, index + 1, candidate, count);
+}
+
+int majorityElement(int* nums, int numsSize) {
+    return majorityElementRecursiveHelper(nums, numsSize, 0, 0, 0);
+}
+
+// Example usage
+int main() {
+    int nums[] = {3, 2, 3};
+    int numsSize = sizeof(nums) / sizeof(nums[0]);
+    int result = majorityElement(nums, numsSize);
+    printf("Majority Element: %d\n", result); // Output: 3
+    return 0;
+}
+*/
