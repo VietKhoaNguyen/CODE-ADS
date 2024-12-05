@@ -1,22 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <unordered_map>
 
 // Function to check if there are nearby duplicates within range k
 bool containsNearbyDuplicate(int* nums, int numsSize, int k) {
-    // Create a hash map to store the last seen index of each number
-    std::unordered_map<int, int> map;
-
+    // Iterate over the array
     for (int i = 0; i < numsSize; i++) {
-        // If the element has been seen and the difference of indices is <= k
-        if (map.find(nums[i]) != map.end() && i - map[nums[i]] <= k) {
-            return true;
+        // Check all previous elements to see if the same number exists within the range
+        for (int j = i + 1; j < numsSize && j <= i + k; j++) {
+            if (nums[i] == nums[j]) {
+                return true; // Found a duplicate within range k
+            }
         }
-        // Store the current index of the element
-        map[nums[i]] = i;
     }
-    
     return false; // No nearby duplicates found
 }
 
