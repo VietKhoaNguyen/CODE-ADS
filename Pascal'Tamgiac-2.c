@@ -18,3 +18,33 @@ int* getRow(int rowIndex, int* returnSize) {
     
     return row;
 }
+/*recur O(2^n)
+#include <stdlib.h>
+
+// Helper function to calculate a specific element in Pascal's triangle row
+int calculateElement(int rowIndex, int colIndex) {
+    // Base case: when the column is at the boundary (first or last column), return 1
+    if (colIndex == 0 || colIndex == rowIndex) {
+        return 1;
+    }
+
+    // Recursive case: calculate element based on previous row elements
+    return calculateElement(rowIndex - 1, colIndex - 1) + calculateElement(rowIndex - 1, colIndex);
+}
+
+// Main function to generate the row
+int* getRow(int rowIndex, int* returnSize) {
+    // Allocate memory for the row. The number of elements in the row is rowIndex + 1.
+    int* row = (int*)malloc((rowIndex + 1) * sizeof(int));
+    
+    // Set the returnSize to the number of elements in the row
+    *returnSize = rowIndex + 1;
+
+    // Calculate each element in the row recursively
+    for (int j = 0; j <= rowIndex; j++) {
+        row[j] = calculateElement(rowIndex, j);
+    }
+
+    return row;
+}
+*/
