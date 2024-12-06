@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdbool.h>
 // Function to compute the greatest common divisor (GCD)
 int gcd(int a, int b) {
     while (b != 0) {
